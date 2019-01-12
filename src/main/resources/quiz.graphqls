@@ -1,0 +1,15 @@
+type Query {
+    questions(page: Int, count: Int): [Question]
+}
+
+type User {
+    id: Int
+    firstName: String
+    lastName: String
+}
+
+type Question {
+    id: Int
+    question: String
+    user: User
+}

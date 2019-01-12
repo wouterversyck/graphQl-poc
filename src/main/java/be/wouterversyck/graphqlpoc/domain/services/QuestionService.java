@@ -22,7 +22,7 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
-    public Question getQuestionById(@NonNull final long id) {
+    public Question getQuestionById(final long id) {
         return questionRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }
