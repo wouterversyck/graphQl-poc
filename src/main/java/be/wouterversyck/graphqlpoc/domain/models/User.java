@@ -3,13 +3,11 @@ package be.wouterversyck.graphqlpoc.domain.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Entity(name = "user")
+@Entity
+@Table(name = "user")
 @Data
 public class User {
     @Id

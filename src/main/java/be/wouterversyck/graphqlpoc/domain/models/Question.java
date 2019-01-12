@@ -6,7 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Entity(name = "question")
+@Entity
+@Table(name = "question")
 @Data
 public class Question {
     @Id
