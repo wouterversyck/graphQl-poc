@@ -72,7 +72,7 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
                 .withLastName("lastName")
                 .build();
 
-        for(User user : List.of(user1, user2)) {
+        List.of(user1, user2).forEach(user ->
             givenWithAuth()
                     .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
@@ -80,8 +80,8 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
                     .when()
                     .post("/user")
                     .then()
-                    .statusCode(400);
-        }
+                    .statusCode(400)
+        );
     }
 
     @Test
