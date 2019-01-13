@@ -23,6 +23,7 @@ public class Question {
     private User user;
 
     @Column(name = "user_id")
+    @JsonIgnore
     private long userId;
 
     @JsonIgnore
