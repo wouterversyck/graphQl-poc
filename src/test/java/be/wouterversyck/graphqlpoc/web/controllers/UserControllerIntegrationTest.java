@@ -7,13 +7,14 @@ import org.junit.Test;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 
 public class UserControllerIntegrationTest extends AbstractIntegrationTest{
 
     @Test
-    public void addUserShouldReturnSameUser() {
+    public void addUserShouldReturnSameUser_AndDeleteShouldRemoveUser() {
         var user = User.builder()
                 .withFirstName("firstName")
                 .withLastName("lastName")
@@ -29,6 +30,24 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
 
         assertThat(response.getFirstName(), equalTo(user.getFirstName()));
         assertThat(response.getLastName(), equalTo(user.getLastName()));
+
+        givenWithAuth()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(user)
+                .when()
+                .delete(format("/user/%s", response.getId()))
+                .then()
+                .statusCode(200);
+
+        givenWithAuth()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(user)
+                .when()
+                .get(format("/user/%s", response.getId()))
+                .then()
+                .statusCode(404);
     }
 
     @Test
@@ -47,19 +66,22 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
 
     @Test
     public void getUsersReturnsUsers() {
-
-        User[] response = givenWithAuth()
+        givenWithAuth()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .when()
                 .get("/user/1/2")
-                .as(User[].class);
+                .then()
+                    .statusCode(200)
+                    .body("pageSize", is(2))
+                    .body("totalElements", is(4))
+                    .body("content.firstName",
+                            hasItems("first_name_3", "first_name_4"))
+                    .body("content.lastName",
+                        hasItems("last_name_3", "last_name_4"))
+                    .body("content.id",
+                            hasItems(3, 4));
 
-        assertThat(response[0].getFirstName(), equalTo("first_name_2"));
-        assertThat(response[0].getLastName(), equalTo("last_name_2"));
-
-        assertThat(response[1].getFirstName(), equalTo("first_name_3"));
-        assertThat(response[1].getLastName(), equalTo("last_name_3"));
     }
 
     @Test

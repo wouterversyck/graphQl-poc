@@ -1,14 +1,14 @@
 package be.wouterversyck.graphqlpoc.domain.services;
 
-import be.wouterversyck.graphqlpoc.domain.exceptions.EntityNotFoundException;
 import be.wouterversyck.graphqlpoc.domain.models.User;
 import be.wouterversyck.graphqlpoc.domain.repositories.UserRepository;
 import lombok.NonNull;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,13 +22,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserById(final long id) {
-        return userRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+    public void deleteUser(final long id) {
+        userRepository.deleteById(id);
     }
 
-    public List<User> getUsers(final int page, final int numberOfUsers) {
-        return userRepository.findAll(PageRequest.of(page, numberOfUsers, Sort.by("firstName", "lastName")))
-                .getContent();
+    public Optional<User> getUserById(final long id) {
+        return userRepository.findById(id);
+    }
+
+    public Page<User> getUsers(final int page, final int numberOfUsers) {
+        return userRepository.findAll(PageRequest.of(page, numberOfUsers, Sort.by("firstName", "lastName")));
     }
 }
