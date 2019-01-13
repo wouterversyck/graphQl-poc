@@ -1,9 +1,9 @@
 # Experiment with GraphQl and Voyager
 
 ## Endpoints:
-1. [Voyager](http://localhost:8080/voyager)
-2. [GraphQl endpoint](http://localhost:8080/graphql)
-3. [GraphiQl](http://localhost:8080/graphiql)
+1. [Voyager loc](http://localhost:8080/voyager) or [Voyager heroku](https://poc-graphql.herokuapp.com/voyager)
+2. [GraphQl endpoint loc](http://localhost:8080/graphql) or [GraphQl endpoint heroku](https://poc-graphql.herokuapp.com/graphql)
+3. [GraphiQl loc](http://localhost:8080/graphiql) or [GraphiQl heroku](https://poc-graphql.herokuapp.com/graphiql)
 
 ## Run locally
 
