@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class QuestionService {
         this.questionRepository = questionRepository;
     }
 
+    @Transactional
     public Question addQuestion(@NonNull final Question question) {
         return questionRepository.save(question);
     }

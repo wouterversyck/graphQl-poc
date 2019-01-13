@@ -19,7 +19,11 @@ public class Question {
     private String question;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
+
+    @Column(name = "user_id")
+    private long userId;
 
     @JsonIgnore
     public static QuestionBuilder builder() {
@@ -29,6 +33,7 @@ public class Question {
     public static class QuestionBuilder {
         private String question;
         private User user;
+        private long userId;
 
         private QuestionBuilder() {}
 
@@ -42,11 +47,16 @@ public class Question {
             return this;
         }
 
+        public QuestionBuilder withUserId(final long userId) {
+            this.userId = userId;
+            return this;
+        }
+
         public Question build() {
             Question questionObj = new Question();
             questionObj.setQuestion(question);
             questionObj.setUser(user);
-
+            questionObj.setUserId(userId);
             return questionObj;
         }
     }

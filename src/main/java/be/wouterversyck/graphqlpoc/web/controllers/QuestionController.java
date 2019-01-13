@@ -2,7 +2,6 @@ package be.wouterversyck.graphqlpoc.web.controllers;
 
 import be.wouterversyck.graphqlpoc.domain.models.Question;
 import be.wouterversyck.graphqlpoc.domain.services.QuestionService;
-import be.wouterversyck.graphqlpoc.domain.services.UserService;
 import be.wouterversyck.graphqlpoc.web.dto.PageDto;
 import be.wouterversyck.graphqlpoc.web.dto.QuestionDto;
 import be.wouterversyck.graphqlpoc.web.exceptions.EntityNotFoundException;
@@ -16,12 +15,9 @@ import javax.validation.Valid;
 public class QuestionController {
 
     private QuestionService questionService;
-    private UserService userService;
 
-    public QuestionController(@NonNull final QuestionService questionService,
-                              @NonNull final UserService userService) {
+    public QuestionController(@NonNull final QuestionService questionService) {
         this.questionService = questionService;
-        this.userService = userService;
     }
 
     @GetMapping("{id}")
@@ -50,9 +46,7 @@ public class QuestionController {
     private Question toQuestion(QuestionDto questionDto) {
         return Question.builder()
                 .withQuestion(questionDto.getQuestion())
-                .withUser(
-                        userService.getUserById(questionDto.getUserId())
-                                .orElseThrow(EntityNotFoundException::new)
-                ).build();
+                .withUserId(questionDto.getUserId())
+                .build();
     }
 }
