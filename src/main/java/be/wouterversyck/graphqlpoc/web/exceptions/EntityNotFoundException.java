@@ -1,4 +1,4 @@
-package be.wouterversyck.graphqlpoc.domain.exceptions;
+package be.wouterversyck.graphqlpoc.web.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

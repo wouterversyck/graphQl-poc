@@ -1,14 +1,14 @@
 package be.wouterversyck.graphqlpoc.domain.services;
 
-import be.wouterversyck.graphqlpoc.domain.exceptions.EntityNotFoundException;
 import be.wouterversyck.graphqlpoc.domain.models.Question;
 import be.wouterversyck.graphqlpoc.domain.repositories.QuestionRepository;
 import lombok.NonNull;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionService {
@@ -22,13 +22,11 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
-    public Question getQuestionById(final long id) {
-        return questionRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+    public Optional<Question> getQuestionById(final long id) {
+        return questionRepository.findById(id);
     }
 
-    public List<Question> getQuestions(final int page, final int amount) {
-        return questionRepository.findAll(PageRequest.of(page, amount, Sort.by("question")))
-                .getContent();
+    public Page<Question> getQuestions(final int page, final int amount) {
+        return questionRepository.findAll(PageRequest.of(page, amount, Sort.by("question")));
     }
 }
