@@ -42,6 +42,11 @@ public class QuestionController {
         );
     }
 
+    @DeleteMapping("{id}")
+    public void deleteQuestion(@PathVariable final long id) {
+        questionService.deleteQuestion(id);
+    }
+
     private Question toQuestion(QuestionDto questionDto) {
         return Question.builder()
                 .withQuestion(questionDto.getQuestion())

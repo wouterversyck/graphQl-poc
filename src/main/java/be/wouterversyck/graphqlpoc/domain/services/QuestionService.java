@@ -29,4 +29,8 @@ public class QuestionService {
     public Page<Question> getQuestions(final int page, final int amount) {
         return questionRepository.findAll(PageRequest.of(page, amount, Sort.by("question")));
     }
+
+    public void deleteQuestion(final long id) {
+        questionRepository.deleteById(id);
+    }
 }
