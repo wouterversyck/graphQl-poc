@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,9 @@ public class QuestionService {
 
     public void deleteQuestion(final long id) {
         questionRepository.deleteById(id);
+    }
+
+    public List<Question> getByUserId(final long id) {
+        return questionRepository.getByUserId(id);
     }
 }
