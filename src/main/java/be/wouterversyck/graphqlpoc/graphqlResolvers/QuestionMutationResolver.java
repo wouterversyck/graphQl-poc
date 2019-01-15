@@ -1,0 +1,23 @@
+package be.wouterversyck.graphqlpoc.graphqlResolvers;
+
+import be.wouterversyck.graphqlpoc.domain.models.Question;
+import be.wouterversyck.graphqlpoc.domain.services.QuestionService;
+import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import org.springframework.stereotype.Component;
+
+@Component
+public class QuestionMutationResolver implements GraphQLMutationResolver {
+    private QuestionService questionService;
+
+    public QuestionMutationResolver(final QuestionService questionService) {
+        this.questionService = questionService;
+    }
+
+    public Question addQuestion(final String question, final long id) {
+        var questionObj = Question.builder()
+                .withQuestion(question)
+                .withUserId(id)
+                .build();
+        return questionService.addQuestion(questionObj);
+    }
+}

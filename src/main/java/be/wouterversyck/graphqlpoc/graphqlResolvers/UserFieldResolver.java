@@ -10,11 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class UserResolver implements GraphQLResolver<User> {
+public class UserFieldResolver implements GraphQLResolver<User> {
 
     private QuestionService questionService;
-
-    public UserResolver(@NonNull final QuestionService questionService) {
+    public UserFieldResolver(@NonNull final QuestionService questionService) {
         this.questionService = questionService;
     }
 
