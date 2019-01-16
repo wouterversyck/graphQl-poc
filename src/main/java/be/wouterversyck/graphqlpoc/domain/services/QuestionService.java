@@ -3,12 +3,15 @@ package be.wouterversyck.graphqlpoc.domain.services;
 import be.wouterversyck.graphqlpoc.domain.models.Question;
 import be.wouterversyck.graphqlpoc.domain.repositories.QuestionRepository;
 import lombok.NonNull;
+import org.reactivestreams.Publisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import reactor.core.publisher.Flux;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +42,19 @@ public class QuestionService {
 
     public List<Question> getByUserId(final long id) {
         return questionRepository.getByUserId(id);
+    }
+
+    public Publisher<Question> getQuestionPublisher() {
+        return Flux.just(
+                getQuestion("test", 1),
+                getQuestion("test2", 1)
+        ).delayElements(Duration.ofMillis(2000));
+    }
+
+    private Question getQuestion(String question, long id) {
+        return Question.builder()
+                .withQuestion(question)
+                .withUserId(id)
+                .build();
     }
 }
