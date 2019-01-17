@@ -3,13 +3,14 @@ package be.wouterversyck.graphqlpoc.graphqlResolvers;
 import be.wouterversyck.graphqlpoc.domain.models.User;
 import be.wouterversyck.graphqlpoc.domain.services.UserService;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMutationResolver implements GraphQLMutationResolver {
     private UserService userService;
 
-    public UserMutationResolver(final UserService userService) {
+    public UserMutationResolver(@NonNull final UserService userService) {
         this.userService = userService;
     }
 

@@ -8,23 +8,32 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import reactor.core.publisher.Flux;
+import reactor.core.Disposable;
+import reactor.core.publisher.ConnectableFlux;
+import reactor.core.publisher.DirectProcessor;
 
-import java.time.Duration;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class QuestionService {
     private QuestionRepository questionRepository;
+    private DirectProcessor<Question> source;
+    private Publisher<Question> stream;
+    private Disposable disposable;
 
     public QuestionService(@NonNull final QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
+        source = DirectProcessor.create();
+        stream = source
+                .publish();
+        disposable = ((ConnectableFlux<Question>) stream).connect();
     }
 
-    @Transactional
     public Question addQuestion(@NonNull final Question question) {
+        source.onNext(question);
         return questionRepository.save(question);
     }
 
@@ -45,16 +54,12 @@ public class QuestionService {
     }
 
     public Publisher<Question> getQuestionPublisher() {
-        return Flux.just(
-                getQuestion("test", 1),
-                getQuestion("test2", 1)
-        ).delayElements(Duration.ofMillis(2000));
+        return stream;
     }
 
-    private Question getQuestion(String question, long id) {
-        return Question.builder()
-                .withQuestion(question)
-                .withUserId(id)
-                .build();
+    @PreDestroy
+    public void destroy() {
+        source.onComplete();
+        disposable.dispose();
     }
 }
