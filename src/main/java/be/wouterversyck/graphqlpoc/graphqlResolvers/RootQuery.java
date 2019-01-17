@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class Query implements GraphQLQueryResolver {
+public class RootQuery implements GraphQLQueryResolver {
 
     private QuestionService questionService;
     private UserService userService;
 
-    public Query(@NonNull final QuestionService questionService, @NonNull final UserService userService) {
+    public RootQuery(@NonNull final QuestionService questionService, @NonNull final UserService userService) {
         this.questionService = questionService;
         this.userService = userService;
     }

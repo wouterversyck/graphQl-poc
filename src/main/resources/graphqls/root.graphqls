@@ -1,0 +1,5 @@
+# Root query
+type Query {
+    questions(page: Int, count: Int): [Question]
+    users(page: Int, count: Int): [User]
+}

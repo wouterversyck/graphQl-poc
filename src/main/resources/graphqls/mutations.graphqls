@@ -1,0 +1,5 @@
+# User and question mutations
+type Mutation {
+    addUser(firstName: String, lastName: String): User
+    addQuestion(question: String, userId: Int): Question
+}

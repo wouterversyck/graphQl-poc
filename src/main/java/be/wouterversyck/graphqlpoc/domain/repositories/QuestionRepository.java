@@ -6,5 +6,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
-    public List<Question> getByUserId(long id);
+    List<Question> getByUserId(long id);
 }

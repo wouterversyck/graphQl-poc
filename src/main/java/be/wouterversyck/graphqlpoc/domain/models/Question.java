@@ -18,7 +18,7 @@ public class Question {
     @Column(name = "question", nullable = false)
     private String question;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 

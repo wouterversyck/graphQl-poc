@@ -1,8 +1,4 @@
-type Query {
-    questions(page: Int, count: Int): [Question]
-    users(page: Int, count: Int): [User]
-}
-
+# The user for which a question is asked
 type User {
     id: Int
     firstName: String
@@ -10,6 +6,7 @@ type User {
     questions: [Question]
 }
 
+# The question, they all relate to a user
 type Question {
     id: Int
     question: String
