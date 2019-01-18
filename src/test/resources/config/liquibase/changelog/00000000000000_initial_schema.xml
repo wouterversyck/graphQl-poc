@@ -18,7 +18,7 @@
     -->
     <changeSet id="00000000000001" author="wouterv">
 
-        <createTable tableName="user">
+        <createTable tableName="wv_user">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -30,7 +30,7 @@
             </column>
         </createTable>
 
-        <createTable tableName="question">
+        <createTable tableName="wv_question">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -43,18 +43,18 @@
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="question"
+                                 baseTableName="wv_question"
                                  constraintName="fk_question_user"
                                  referencedColumnNames="id"
-                                 referencedTableName="user"/>
+                                 referencedTableName="wv_user"/>
 
         <loadData file="config/liquibase/seed_data/users.csv"
                   separator=";"
-                  tableName="user">
+                  tableName="wv_user">
         </loadData>
         <loadData file="config/liquibase/seed_data/questions.csv"
                   separator=";"
-                  tableName="question">
+                  tableName="wv_question">
         </loadData>
     </changeSet>
 </databaseChangeLog>
