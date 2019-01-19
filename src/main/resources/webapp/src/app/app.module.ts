@@ -5,10 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
 import { QuestionsModule } from './questions/questions.module';
+import { CustomMaterialsModule } from './custom-materials/custom-materials.module';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
@@ -17,9 +15,7 @@ import { HomeModule } from './home/home.module';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatMenuModule,
-    MatIconModule,
+    CustomMaterialsModule,
     QuestionsModule,
     HomeModule,
     AppRoutingModule,
