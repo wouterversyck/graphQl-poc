@@ -85,16 +85,6 @@
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>${graphql.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>graphiql-spring-boot-starter</artifactId>
-            <version>${graphql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>voyager-spring-boot-starter</artifactId>
-            <version>${graphql.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -157,6 +147,21 @@
     </dependencyManagement>
 
     <profiles>
+        <profile>
+            <id>debug</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.graphql-java-kickstart</groupId>
+                    <artifactId>graphiql-spring-boot-starter</artifactId>
+                    <version>${graphql.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.graphql-java-kickstart</groupId>
+                    <artifactId>voyager-spring-boot-starter</artifactId>
+                    <version>${graphql.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
         <profile>
             <id>integration-test</id>
             <properties>
