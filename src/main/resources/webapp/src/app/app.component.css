@@ -1,0 +1,14 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#header-wrapper {
+  width: 100%;
+}
+
+header h1, header img {
+  display: inline-block;
+  vertical-align: middle;
+}
