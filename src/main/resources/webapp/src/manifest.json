@@ -1,11 +1,11 @@
 {
-  "name": "graphql-poc",
-  "short_name": "graphql-poc",
+  "name": "Graphql PWA Stuff",
+  "short_name": "Graphql PWA Stuff",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#B00B1E",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "index.html",
   "icons": [
     {
       "src": "assets/icons/android-icon-36x36.png",
