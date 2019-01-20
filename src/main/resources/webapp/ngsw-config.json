@@ -6,9 +6,15 @@
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html",
-        "/*.css",
-        "/*.js"
+        "/index.html"
+      ],
+      "versionedFiles": [
+        "/**/*.html",
+        "/**/*.js",
+        "/**/*.css"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/icon?family=Material+Icons"
       ]
     }
   }, {
