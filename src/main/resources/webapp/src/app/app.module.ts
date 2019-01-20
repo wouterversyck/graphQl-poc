@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { QuestionsModule } from './questions/questions.module';
 import { CustomMaterialsModule } from './custom-materials/custom-materials.module';
 import { HomeModule } from './home/home.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeModule } from './home/home.module';
     QuestionsModule,
     HomeModule,
     AppRoutingModule,
+    CoreModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

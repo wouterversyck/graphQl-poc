@@ -22,3 +22,4 @@
 </mat-menu>
 
 <router-outlet></router-outlet>
+<button *ngIf="getPromptEvent()" (click)="installPwa()">Install</button>
