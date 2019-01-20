@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class PwaService {
-
-  promptEvent;
+  private promptEventEmitter: EventEmitter<Event> = new EventEmitter();
 
   constructor() {
     window.addEventListener('beforeinstallprompt', event => {
-      this.promptEvent = event;
+      this.promptEventEmitter.emit(event);
     });
+  }
+
+  getPromptEmitter(): EventEmitter<Event> {
+    return this.promptEventEmitter;
   }
 }

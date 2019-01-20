@@ -8,13 +8,18 @@ import { PwaService } from './core/pwa/pwa.service';
 })
 export class AppComponent {
   title = 'app';
+  showInstall = false;
+  private promptEvent;
 
-  constructor(private pwa: PwaService) {}
-  installPwa(): void {
-    this.pwa.promptEvent.prompt();
+  constructor(private pwaService: PwaService) {
+    this.pwaService.getPromptEmitter()
+      .subscribe(event => {
+        this.promptEvent = event;
+        this.showInstall = true;
+      });
   }
 
-  getPromptEvent(): Event {
-    return this.pwa.promptEvent;
+  installPwa(): void {
+    this.promptEvent.prompt();
   }
 }
