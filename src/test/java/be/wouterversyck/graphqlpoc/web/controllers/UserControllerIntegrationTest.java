@@ -105,12 +105,4 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
                     .statusCode(400)
         );
     }
-
-    @Test
-    public void userEndpointIsSecured() {
-        given()
-                .get("/user")
-                .then()
-                .statusCode(401);
-    }
 }

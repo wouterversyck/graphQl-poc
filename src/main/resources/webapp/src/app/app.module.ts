@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule} from "./core/core.module";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { QuestionsModule } from './questions/questions.module';
 import { CustomMaterialsModule } from './custom-materials/custom-materials.module';
-import { HomeModule } from './home/home.module';
-import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +15,10 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    CustomMaterialsModule,
-    QuestionsModule,
-    HomeModule,
-    AppRoutingModule,
+    HttpClientModule,
     CoreModule,
+    CustomMaterialsModule,
+    AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
