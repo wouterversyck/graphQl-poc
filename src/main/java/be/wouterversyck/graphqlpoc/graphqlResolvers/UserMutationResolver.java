@@ -16,8 +16,8 @@ public class UserMutationResolver implements GraphQLMutationResolver {
 
     public User addUser(final String firstName, final String lastName) {
         var user = User.builder()
-                .withFirstName(firstName)
-                .withLastName(lastName)
+                .firstName(firstName)
+                .lastName(lastName)
                 .build();
 
         return userService.addUser(user);

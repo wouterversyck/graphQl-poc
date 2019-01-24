@@ -16,8 +16,8 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
     @Test
     public void addUserShouldReturnSameUser_AndDeleteShouldRemoveUser() {
         var user = User.builder()
-                .withFirstName("firstName")
-                .withLastName("lastName")
+                .firstName("firstName")
+                .lastName("lastName")
                 .build();
 
         var response = givenWithAuth()
@@ -87,11 +87,11 @@ public class UserControllerIntegrationTest extends AbstractIntegrationTest{
     @Test
     public void beanValidationWorks() {
         var user1 = User.builder()
-                .withFirstName("firstName")
+                .firstName("firstName")
                 .build();
 
         var user2 = User.builder()
-                .withLastName("lastName")
+                .lastName("lastName")
                 .build();
 
         List.of(user1, user2).forEach(user ->

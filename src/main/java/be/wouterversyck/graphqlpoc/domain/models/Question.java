@@ -1,13 +1,19 @@
 package be.wouterversyck.graphqlpoc.domain.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "wv_question")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Question {
     @Id
@@ -25,40 +31,4 @@ public class Question {
     @Column(name = "user_id")
     @JsonIgnore
     private long userId;
-
-    @JsonIgnore
-    public static QuestionBuilder builder() {
-        return new QuestionBuilder();
-    }
-
-    public static class QuestionBuilder {
-        private String question;
-        private User user;
-        private long userId;
-
-        private QuestionBuilder() {}
-
-        public QuestionBuilder withQuestion(final String question) {
-            this.question = question;
-            return this;
-        }
-
-        public QuestionBuilder withUser(final User user) {
-            this.user = user;
-            return this;
-        }
-
-        public QuestionBuilder withUserId(final long userId) {
-            this.userId = userId;
-            return this;
-        }
-
-        public Question build() {
-            Question questionObj = new Question();
-            questionObj.setQuestion(question);
-            questionObj.setUser(user);
-            questionObj.setUserId(userId);
-            return questionObj;
-        }
-    }
 }
