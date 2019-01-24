@@ -1,4 +1,4 @@
-<table *ngIf="currentPage.content?.length > 0" class="GetQuestions--list-table">
+<table *ngIf="currentPage" class="GetQuestions--list-table">
   <tr *ngFor="let question of currentPage.content">
     <td>{{question.question}}</td>
     <td>{{question.user.firstName}}</td>
