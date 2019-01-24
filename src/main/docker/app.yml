@@ -1,0 +1,14 @@
+version: '2'
+services:
+    onlinescrumpoker-app:
+        image: graphql-poc
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prd
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://onlinescrumpoker-postgresql:5432/OnlineScrumPoker
+        ports:
+            - 80:80
+    onlinescrumpoker-postgresql:
+        extends:
+            file: postgresql.yml
+            service: graphql-poc-postgresql
