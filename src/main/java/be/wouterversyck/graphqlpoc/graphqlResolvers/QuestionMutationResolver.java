@@ -16,8 +16,8 @@ public class QuestionMutationResolver implements GraphQLMutationResolver {
 
     public Question addQuestion(final String question, final long id) {
         var questionObj = Question.builder()
-                .withQuestion(question)
-                .withUserId(id)
+                .question(question)
+                .userId(id)
                 .build();
         return questionService.addQuestion(questionObj);
     }

@@ -45,8 +45,8 @@ public class QuestionController {
 
     private Question toQuestion(QuestionDto questionDto) {
         return Question.builder()
-                .withQuestion(questionDto.getQuestion())
-                .withUserId(questionDto.getUserId())
+                .question(questionDto.getQuestion())
+                .userId(questionDto.getUserId())
                 .build();
     }
 }

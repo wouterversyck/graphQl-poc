@@ -1,3 +1,10 @@
-<p>
-  get-question-component works!
-</p>
+<table *ngIf="currentPage.content?.length > 0" class="GetQuestions--list-table">
+  <tr *ngFor="let question of currentPage.content">
+    <td>{{question.question}}</td>
+    <td>{{question.user.firstName}}</td>
+    <td>{{question.user.lastName}}</td>
+    <td>
+      <span>delete</span>
+    </td>
+  </tr>
+</table>

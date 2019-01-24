@@ -1,0 +1,11 @@
+version: '2'
+services:
+    graphql-poc-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/graphql-poc/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=graphql-poc
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

@@ -4,7 +4,7 @@ import { GetQuestionsComponent } from './get-questions/get-questions.component';
 
 const routes: Routes = [
   {
-    path: "question",
+    path: '',
     component: GetQuestionsComponent
   }
 ];
