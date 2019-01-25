@@ -1,7 +1,5 @@
-import { Question } from './question.model';
-
-export class Page {
-  content: Question[];
+export class Page<T> {
+  content: T[];
   pageNumber: number;
   pageSize: number;
   totalElements: number;
