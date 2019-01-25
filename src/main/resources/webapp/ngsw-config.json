@@ -6,12 +6,9 @@
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html"
-      ],
-      "versionedFiles": [
-        "/**/*.html",
-        "/**/*.js",
-        "/**/*.css"
+        "/index.html",
+        "/*.js",
+        "/*.css"
       ],
       "urls": [
         "https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -25,6 +22,28 @@
       "files": [
         "/assets/**"
       ]
+    }
+  }],
+  "dataGroups": [{
+    "name": "api-freshness",
+    "urls": [
+      "/question"
+    ],
+    "cacheConfig": {
+      "maxSize": 100,
+      "maxAge": "1h",
+      "timeout": "10s",
+      "strategy": "freshness"
+    }
+  }, {
+    "name": "api-performance",
+    "urls": [
+      "/user"
+    ],
+    "cacheConfig": {
+      "maxSize": 100,
+      "maxAge": "1d",
+      "strategy": "performance"
     }
   }]
 }
