@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "watch": "ng serve --watch"
+    "watch": "ng serve --watch",
+    "compliment": "echo Hey you... & echo yes you there... & echo You're very handsome"
   },
   "private": true,
   "dependencies": {
