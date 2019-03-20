@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRestService } from '../services/rest/user-rest.service';
+import { MatTableDataSource } from '@angular/material';
+import { DataSource } from '@angular/cdk/table';
 import { Page } from '../../core/models/page.model';
 import { User } from '../models/user.model';
 
@@ -10,6 +12,8 @@ import { User } from '../models/user.model';
 })
 export class GetUsersComponent implements OnInit {
   currentPage: Page<User>;
+  dataSource: DataSource<User>;
+  displayedColumns: string[] = ['firstName', 'lastName', 'delete'];
 
   constructor(private userService: UserRestService) { }
 
@@ -22,11 +26,17 @@ export class GetUsersComponent implements OnInit {
       return;
     }
     this.userService.deleteUsers(id)
-      .subscribe(e => this.currentPage.content = this.currentPage.content.filter(e => e.id !== id));
+      .subscribe(e => {
+        this.currentPage.content = this.currentPage.content.filter(e => e.id !== id);
+        this.dataSource = new MatTableDataSource(this.currentPage.content);
+      });
   }
 
   private fetchUsers(): void {
     this.userService.getUsers(0, 20)
-      .subscribe(e => this.currentPage = e);
+      .subscribe((e: Page<User>) => {
+        this.currentPage = e;
+        this.dataSource = new MatTableDataSource(this.currentPage.content);
+      });
   }
 }

@@ -1,9 +1,38 @@
-<table *ngIf="currentPage" class="GetQuestions--list-table">
-  <tr *ngFor="let user of currentPage.content">
-    <td>{{user.firstName}}</td>
-    <td>{{user.lastName}}</td>
-    <td>
-      <button (click)="deleteUser(user.id)">delete</button>
-    </td>
-  </tr>
-</table>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink='/questions'>Get questions</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink='/question/add'>Add question</a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-stroked-button color="accent" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef> First name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef> Last name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-ripple mat-raised-button (click)="deleteUser(element.id)" color="warn">delete</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-sidenav-content>
+</mat-sidenav-container>

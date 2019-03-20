@@ -1,26 +1,29 @@
-<mat-toolbar color="secondary">
-  <div id="header-wrapper">
-    <header>
-      <a [routerLink]="['/']">
-        <img width="50px" src="assets/images/logo.svg" title="logo" />
-        <h1>
-          Hello there
-        </h1>
-      </a>
-    </header>
-  </div>
-  <nav fxShow="false" fxShow.gt-sm>
-    <a [routerLink]="['/questions']">Questions</a>
-    <a [routerLink]="['/users']">Users</a>
-  </nav>
-  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
+<div class="mat-typography app-frame mat-app-background" fxLayout="column">
+  <mat-toolbar>
+    <div id="header-wrapper">
+      <header>
+        <button mat-button [routerLink]="['/']">
+          <img width="50px" src="assets/images/logo.svg" title="logo" />
+          &nbsp;
+          <h1>
+            Hello there
+          </h1>
+        </button>
+      </header>
+    </div>
+    <nav fxShow="false" fxShow.gt-sm>
+      <button mat-ripple mat-stroked-button [routerLink]="['/questions']" color="accent">Questions</button>&nbsp;
+      <button mat-ripple mat-stroked-button [routerLink]="['/users']" color="accent">Users</button>
+    </nav>
+    <button mat-stroked-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+      <mat-icon color="accent">menu</mat-icon>
+    </button>
+  </mat-toolbar>
 
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item [routerLink]="['/questions']">Questions</button>
-  <button mat-menu-item [routerLink]="['/users']">Users</button>
-</mat-menu>
-
-<router-outlet></router-outlet>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/questions']">Questions</button>
+    <button mat-menu-item [routerLink]="['/users']">Users</button>
+  </mat-menu>
+  <mat-divider></mat-divider>
+  <router-outlet></router-outlet>
+</div>

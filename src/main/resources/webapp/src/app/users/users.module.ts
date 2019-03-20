@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { GetUsersComponent } from './get-users/get-users.component';
 import { UserRestService } from './services/rest/user-rest.service';
+import { CustomMaterialsModule } from '../custom-materials/custom-materials.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { UserRestService } from './services/rest/user-rest.service';
   ],
   imports: [
     CommonModule,
+    CustomMaterialsModule,
     UsersRoutingModule
   ],
   providers: [

@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatMenuModule } from '@angular/material';
-import { MatSnackBarModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
+import { MatSidenavModule, MatTableModule, MatMenuModule, MatSnackBarModule, MatIconModule, MatToolbarModule, MatButtonModule, MatListModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material';
 import { MatPopupService } from './services/mat-popup.service';
 
 @NgModule({
@@ -16,17 +11,25 @@ import { MatPopupService } from './services/mat-popup.service';
     MatMenuModule,
     MatIconModule,
     MatSnackBarModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatTableModule,
+    MatSidenavModule,
   ],
   exports: [
     MatMenuModule,
     MatIconModule,
     MatSnackBarModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatTableModule,
+    MatSidenavModule,
   ],
   providers: [
     MatPopupService

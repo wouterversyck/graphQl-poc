@@ -24,7 +24,6 @@ import { trigger, style, animate, transition, query, group, sequence } from '@an
         ])
       ])
     ]),
-
     trigger('textAnimation', [
       transition(':enter',  [
         group([
