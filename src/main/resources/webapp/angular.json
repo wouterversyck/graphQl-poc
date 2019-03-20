@@ -52,7 +52,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "graphql-poc:build"
+            "browserTarget": "graphql-poc:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
