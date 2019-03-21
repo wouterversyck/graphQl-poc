@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
 import { Observable, Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PwaService {
   private promptObservable = new Subject<BeforeInstallPromptEvent >();
 

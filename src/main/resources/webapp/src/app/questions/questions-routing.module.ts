@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GetQuestionsComponent } from './get-questions/get-questions.component';
+import { QuestionComponent } from './pages/question/question.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: GetQuestionsComponent
+    component: QuestionComponent
   }
 ];
 

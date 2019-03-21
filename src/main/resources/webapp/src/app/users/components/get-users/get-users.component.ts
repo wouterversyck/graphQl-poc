@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRestService } from '../services/rest/user-rest.service';
+import { UserRestService } from '../../services/rest/user-rest.service';
 import { MatTableDataSource } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
-import { Page } from '../../core/models/page.model';
-import { User } from '../models/user.model';
+import { Page } from '../../../core/models/page.model';
+import { User } from '../../models/user.model';
+import { LoaderService } from '../../../core/components/loader/service/loader.service';
 
 @Component({
   selector: 'app-get-users',
@@ -15,7 +16,7 @@ export class GetUsersComponent implements OnInit {
   dataSource: DataSource<User>;
   displayedColumns: string[] = ['firstName', 'lastName', 'delete'];
 
-  constructor(private userService: UserRestService) { }
+  constructor(private userService: UserRestService, private loaderSerivce: LoaderService) { }
 
   ngOnInit() {
     this.fetchUsers();
@@ -33,10 +34,12 @@ export class GetUsersComponent implements OnInit {
   }
 
   private fetchUsers(): void {
+    this.loaderSerivce.show();
     this.userService.getUsers(0, 20)
       .subscribe((e: Page<User>) => {
         this.currentPage = e;
         this.dataSource = new MatTableDataSource(this.currentPage.content);
+        this.loaderSerivce.hide();
       });
   }
 }
