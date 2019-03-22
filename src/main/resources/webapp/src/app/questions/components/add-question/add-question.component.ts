@@ -17,4 +17,7 @@ export class AddQuestionComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    // NOP
+  }
 }
