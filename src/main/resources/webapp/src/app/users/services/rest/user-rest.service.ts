@@ -12,7 +12,7 @@ import { CollectionChangeEvent } from '../../../core/models/collection-change-ev
 export class UserRestService {
   static USERS_ENDPOINT = '/user';
   constructor(private httpClient: HttpClient) { }
-  collectionChanged = new Subject<CollectionChangeEvent>();
+  collectionChanged = new Subject<CollectionChangeEvent<User>>();
 
   getUsers(page: number, nrOfResults: number): Observable<Page<User>> {
     return this.httpClient.get<Page<User>>(`${UserRestService.USERS_ENDPOINT}/${page}/${nrOfResults}`);
