@@ -24,12 +24,12 @@ export class GetUsersComponent implements OnInit {
   }
 
   public deleteUser(id: number): void {
-    if(!confirm(`Delete user with id ${id}, this will also delete all the questions associated with the user`)) {
+    if (!confirm(`Delete user with id ${id}, this will also delete all the questions associated with the user`)) {
       return;
     }
     this.userService.deleteUsers(id)
       .subscribe(e => {
-        this.currentPage.content = this.currentPage.content.filter(e => e.id !== id);
+        this.currentPage.content = this.currentPage.content.filter(page => page.id !== id);
         this.dataSource = new MatTableDataSource(this.currentPage.content);
       });
   }

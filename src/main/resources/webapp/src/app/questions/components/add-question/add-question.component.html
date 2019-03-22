@@ -1,0 +1,11 @@
+<mat-card>
+  <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Question" formControlName="question">
+    </mat-form-field>
+    <br>
+    <div>
+      <button mat-raised-button type="submit" [disabled]="!questionForm.valid">Submit</button>
+    </div>
+  </form>
+</mat-card>

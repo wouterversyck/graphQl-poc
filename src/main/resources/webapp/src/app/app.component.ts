@@ -15,8 +15,8 @@ export class AppComponent {
       .subscribe(event => {
 
         this.snackBar.showPopUpAction(
-          "Add this application to the home menu",
-          "Install",
+          'Add this application to the home menu',
+          'Install',
           () => event.prompt()
           );
       });
@@ -24,8 +24,8 @@ export class AppComponent {
     this.pwaService.getUpdateAvailableObservable()
       .subscribe(event => {
         this.snackBar.showPopUpAction(
-          "There is an update available",
-          "Install",
+          'There is an update available',
+          'Install',
           () => window.location.reload());
       });
   }

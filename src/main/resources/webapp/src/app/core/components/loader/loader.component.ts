@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { LoaderService } from './service/loader.service';
-import { trigger, style, transition, animate, state } from "@angular/animations";
+import { trigger, style, transition, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-loader',
@@ -13,7 +13,7 @@ import { trigger, style, transition, animate, state } from "@angular/animations"
         style({ opacity: 1 }),
         animate('300ms ease-in-out' )
       ]),
-      transition('fadeIn => fadeOut',[
+      transition('fadeIn => fadeOut', [
         style({ opacity: 0 }),
         animate('300ms ease-in-out' )
       ])
@@ -21,25 +21,25 @@ import { trigger, style, transition, animate, state } from "@angular/animations"
   ]
 })
 export class LoaderComponent implements OnInit {
-  showLoader: boolean = false;
-  @HostBinding('class.hide') hideLoader: boolean = true;
+  showLoader = false;
+  @HostBinding('class.hide') hideLoader = true;
   constructor(private loaderService: LoaderService) {
   }
 
   ngOnInit() {
     this.loaderService.loaderState.subscribe((show: boolean) => {
       this.showLoader = show;
-    })
+    });
   }
 
   animationEnd(event) {
-    if(event.fromState === 'fadeIn' && event.toState === 'fadeOut') {
+    if (event.fromState === 'fadeIn' && event.toState === 'fadeOut') {
       this.hideLoader = true;
     }
   }
 
   animationStart(event) {
-    if(event.fromState === 'fadeOut') {
+    if (event.fromState === 'fadeOut') {
       this.hideLoader = false;
     }
   }

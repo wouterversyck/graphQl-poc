@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MatPaginatorModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatTabsModule, MatTableModule, MatMenuModule, MatSnackBarModule, MatIconModule, MatToolbarModule, MatButtonModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatPaginatorModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatTabsModule,
+  MatTableModule, MatMenuModule, MatSnackBarModule, MatIconModule, MatToolbarModule, MatButtonModule,
+  MatListModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatPopupService } from './services/mat-popup.service';
 

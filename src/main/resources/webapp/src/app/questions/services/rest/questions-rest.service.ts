@@ -10,7 +10,7 @@ export class QuestionsRestService {
   constructor(private httpClient: HttpClient) { }
 
   getQuestions(page: number, nrOfResults: number): Observable<Page<Question>> {
-    return this.httpClient.get<Page<Question>>(`${QuestionsRestService.QUESTIONS_ENDPOINT}/${page}/${nrOfResults}`)
+    return this.httpClient.get<Page<Question>>(`${QuestionsRestService.QUESTIONS_ENDPOINT}/${page}/${nrOfResults}`);
   }
 
   deleteQuestion(id: number) {

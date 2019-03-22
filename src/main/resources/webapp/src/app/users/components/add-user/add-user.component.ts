@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserRestService } from '../../services/rest/user-rest.service';
-import {LoaderService} from "../../../core/components/loader/service/loader.service";
+import { LoaderService } from '../../../core/components/loader/service/loader.service';
 import { finalize } from 'rxjs/operators';
 
 @Component({
@@ -25,6 +25,6 @@ export class AddUserComponent implements OnInit {
       .pipe(
         finalize(() => this.loaderService.hide())
       )
-      .subscribe(() => this.userForm.reset(""));
+      .subscribe(() => this.userForm.reset(''));
   }
 }
