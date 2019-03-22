@@ -25,6 +25,6 @@ export class AddUserComponent implements OnInit {
       .pipe(
         finalize(() => this.loaderService.hide())
       )
-      .subscribe(() => this.userForm.reset(''));
+      .subscribe(() => this.userForm.reset());
   }
 }

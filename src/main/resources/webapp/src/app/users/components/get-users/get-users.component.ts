@@ -6,6 +6,7 @@ import { Page } from '../../../core/models/page.model';
 import { User } from '../../models/user.model';
 import { LoaderService } from '../../../core/components/loader/service/loader.service';
 import { finalize } from 'rxjs/operators';
+import { CollectionChangeEvent } from '../../../core/models/collection-change-event';
 
 @Component({
   selector: 'app-get-users',
@@ -21,6 +22,11 @@ export class GetUsersComponent implements OnInit {
 
   ngOnInit() {
     this.fetchUsers(0, 10);
+
+    this.userService.collectionChanged
+      .subscribe((e: CollectionChangeEvent<User>) => {
+          this.fetchUsers(this.currentPage.pageNumber, this.currentPage.pageSize);
+      });
   }
 
   public deleteUser(id: number): void {
