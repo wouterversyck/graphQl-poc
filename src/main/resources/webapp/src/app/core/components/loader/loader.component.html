@@ -1,4 +1,7 @@
-<div [@loader]="showLoader" id="mat-spinner-container" *ngIf="showLoader">
+<div id="mat-spinner-container"
+     [@loader]="showLoader ? 'fadeIn' : 'fadeOut'"
+     (@loader.start)="animationStart($event)"
+     (@loader.done)="animationEnd($event)">
   <div id="mat-spinner-wrap">
     <mat-spinner></mat-spinner>
   </div>
