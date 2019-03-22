@@ -3,11 +3,23 @@
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 
 html, body, app-root, .app-frame {
-  overflow: hidden;
   margin: 0;
   height: 100%;
   box-sizing: border-box;
   color: #e0e0e0;
+  overflow: hidden;
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+.mat-app-background {
+  overflow-y: auto;
+}
+
+.hide {
+  display: none;
 }
 
 .clearfix:before,

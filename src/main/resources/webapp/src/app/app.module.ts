@@ -9,6 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { CustomMaterialsModule } from './custom-materials/custom-materials.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CustomMaterialsModule } from './custom-materials/custom-materials.modul
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     CoreModule,
     CustomMaterialsModule,
     AppRoutingModule,

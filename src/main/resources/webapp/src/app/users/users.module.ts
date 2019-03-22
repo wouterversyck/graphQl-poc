@@ -7,6 +7,7 @@ import { UserRestService } from './services/rest/user-rest.service';
 import { CustomMaterialsModule } from '../custom-materials/custom-materials.module';
 import { UserComponent } from './pages/user/user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,9 @@ import { AddUserComponent } from './components/add-user/add-user.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     CustomMaterialsModule,
     UsersRoutingModule
-  ],
-  providers: [
-    UserRestService
   ]
 })
 export class UsersModule { }

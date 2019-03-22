@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { Page } from '../../../core/models/page.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserRestService {
   static USERS_ENDPOINT = '/user';
   constructor(private httpClient: HttpClient) { }
@@ -15,5 +17,9 @@ export class UserRestService {
 
   deleteUsers(id: number) {
     return this.httpClient.delete(`${UserRestService.USERS_ENDPOINT}/${id}`);
+  }
+
+  addUser(user: User) {
+    return this.httpClient.post(`${UserRestService.USERS_ENDPOINT}`, user);
   }
 }
