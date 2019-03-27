@@ -24,6 +24,10 @@ public class User {
     private long id;
 
     @NotBlank
+    @Column(name = "user_name", nullable = false, unique = true)
+    private String userName;
+
+    @NotBlank
     @Column(name = "first_name", nullable = false)
     private String firstName;
 

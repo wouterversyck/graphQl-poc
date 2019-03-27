@@ -1,12 +1,20 @@
 <mat-card>
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput type="text" placeholder="First name:" formControlName="firstName">
+      <input matInput type="text" placeholder="First name:" formControlName="firstName" [value]="">
+      <mat-error *ngIf="firstNameControl.invalid && firstNameControl.errors.required">First name is required.</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
       <input matInput type="text" placeholder="Last name:" formControlName="lastName">
+      <mat-error *ngIf="lastNameControl.invalid && lastNameControl.errors.required">Last name is required.</mat-error>
     </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="text" placeholder="User name:" formControlName="userName">
+      <mat-error *ngIf="userNameControl.invalid && userNameControl.errors.required">User name is required.</mat-error>
+    </mat-form-field>
+    <br>
     <br>
     <div>
       <button mat-raised-button type="submit" [disabled]="!userForm.valid">Submit</button>

@@ -4,6 +4,14 @@
       <input matInput type="text" placeholder="Question" formControlName="question">
     </mat-form-field>
     <br>
+    <mat-form-field>
+      <input matInput type="text" placeholder="User" formControlName="user" [matAutocomplete]="auto">
+    </mat-form-field>
+    <input type="hidden" formControlName="userId">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let user of users" [value]="getValue(user)">{{user.firstName}} {{user.lastName}}</mat-option>
+    </mat-autocomplete>
+    <br>
     <div>
       <button mat-raised-button type="submit" [disabled]="!questionForm.valid">Submit</button>
     </div>

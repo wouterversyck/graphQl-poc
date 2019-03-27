@@ -1,9 +1,9 @@
-id;first_name;last_name
-1;marc;van lombeek
-2;eddy;merckx
-3;johan;server
-4;jeff;vranckx
-5;jos;doorn
-6;guy;hesp
-7;marcel;devriend
-8;gert;jacobs
+id;first_name;last_name;user_name
+1;marc;van lombeek;mvanlombeek
+2;eddy;merckx;emerckx
+3;johan;server;jserver
+4;jeff;vranckx;jvranckx
+5;jos;doorn;jdoorn
+6;guy;hesp;ghesp
+7;marcel;devriend;mdevriend
+8;gert;jacobs;gjacobs

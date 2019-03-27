@@ -22,6 +22,14 @@ export class UserRestService {
     return this.httpClient.delete(`${UserRestService.USERS_ENDPOINT}/${id}`);
   }
 
+  searchUser(keyWord: string) {
+    return this.httpClient.get(`${UserRestService.USERS_ENDPOINT}/search/${keyWord}`);
+  }
+
+  userNameExists(userName: string) {
+    return this.httpClient.get(`${UserRestService.USERS_ENDPOINT}/exists/${userName}`);
+  }
+
   addUser(user: User) {
     return this.httpClient.post(`${UserRestService.USERS_ENDPOINT}`, user)
       .pipe(

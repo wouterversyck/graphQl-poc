@@ -8,6 +8,7 @@ import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("user")
 @RestController
@@ -35,6 +36,16 @@ public class UserController {
         return new PageDto<>(
                 userService.getUsers(page, count)
         );
+    }
+
+    @GetMapping("search/{keyWord}")
+    public Iterable<User> searchUsers(@PathVariable("keyWord") String keyWord) {
+        return userService.searchUsers(keyWord);
+    }
+
+    @GetMapping("exists/{userName}")
+    public boolean usernameExists(@PathVariable("userName") String userName) {
+        return userService.userNameExists(userName);
     }
 
     @DeleteMapping("{id}")
