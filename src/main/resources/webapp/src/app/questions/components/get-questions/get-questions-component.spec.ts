@@ -1,6 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { GetQuestionsComponent } from './get-questions.component';
+import { QuestionsRestService } from '../../services/rest/questions-rest.service';
+import { CustomMaterialsModule } from '../../../custom-materials/custom-materials.module';
+import { from } from 'rxjs';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('GetQuestionsComponent', () => {
   let component: GetQuestionsComponent;
@@ -8,9 +13,17 @@ describe('GetQuestionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GetQuestionsComponent ]
+      declarations: [GetQuestionsComponent],
+      imports: [
+        CustomMaterialsModule,
+        NoopAnimationsModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        QuestionsRestService
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -20,6 +33,6 @@ describe('GetQuestionsComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+      expect(component).toBeTruthy();
+    });
 });

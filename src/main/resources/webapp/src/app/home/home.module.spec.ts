@@ -1,5 +1,4 @@
 import { HomeModule } from './home.module';
-import 'jasmine';
 
 describe('HomeModule', () => {
   let homeModule: HomeModule;

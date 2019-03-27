@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { QuestionsRestService } from '../../services/rest/questions-rest.service';
 import { UserRestService } from '../../../users/services/rest/user-rest.service';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { User } from '../../../users/models/user.model';
@@ -17,7 +16,7 @@ export class AddQuestionComponent implements OnInit {
     userId: new FormControl('', Validators.required)
   });
   users: User[];
-  constructor(private questionService: QuestionsRestService, private userService: UserRestService) { }
+  constructor(private userService: UserRestService) { }
 
   ngOnInit() {
     this.questionForm.valueChanges

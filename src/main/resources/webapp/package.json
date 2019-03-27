@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "e2e-skip-update": "ng e2e --webdriver-update=false",
     "watch": "ng serve --watch",
     "compliment": "echo Hey you... & echo yes you there... & echo You're very handsome"
   },
